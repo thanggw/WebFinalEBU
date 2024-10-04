@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Poppins';
+    padding: 20px;
+    background-color: #f4f4f4;
+   
+}
+
+.main{
+    display: grid;
+    grid-template-rows: 60% 40%;
+}
+
+.container{
+    max-width: 1200px;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 40% 60%;
+    overflow: hidden;
+}
+
+.image{
+    width: 350px;
+    height: 400px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+    margin-left: 20px;
+    transition: transform 0.3s ease;
+}
+
+.image:hover{
+    transform: scale(1.05);
+}
+
+.image img{
+    width: 350px;
+    height: auto;   
+}
+
+.content .price{
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.vote{
+    color: gold;
+}
+
+.vote:hover{
+    cursor: pointer;
+    color: orange;
+}
+
+.content .description{
+    margin-bottom: 20px;
+}
+
+.btn{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    transition: background-color 0.3s ease-in-out;
+    margin-top: 20px;
+}
+
+button{
+    font-size: 1rem;
+    color: white;
+    font-weight: smaller;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.add-to-cart{
+    background-color: orange;
+}
+
+.add-to-cart:hover{
+    background-color: rgb(226, 140, 36);
+}
+
+.buy-now{
+    background-color: blue;
+}
+
+.buy-now:hover{
+    background-color: rgb(44, 44, 199);
+}
+
+.wrapper{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+}
+
+.product-item img{
+    text-align: center;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.product-item img:hover {
+    transform: translateY(-5px);
+}
+
+.sizes, .colors {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.size-options, .color-options {
+    display: flex;
+    margin-left: 10px;
+}
+
+.size-button, .color-button {
+    color: #ccc;
+    font-size: 16px;
+    margin: 0 5px;
+    transition: background-color 0.3s, color 0.3s;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: gray;
+    cursor: pointer;
+    margin: 0 5px;
+}
+
+.size-button:hover, .color-button:hover {
+    background-color: #ddd;
+    color: black;
+    outline: none;
+}
