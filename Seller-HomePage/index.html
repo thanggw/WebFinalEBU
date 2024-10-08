@@ -49,8 +49,19 @@
 
     <section class="chart-container">
         <h2>Biểu đồ doanh thu tháng</h2>
-        <canvas id="revenueChart" width="400" height="200"></canvas>
+        <div class="charts-row">
+            <div class="chart-box">
+                <canvas id="revenueChart" width="420" height="390"></canvas>
+            </div>
+            <div class="chart-box">
+                <canvas id="pieChart1" width="390" height="190"></canvas> 
+            </div>
+            <div class="chart-box">
+                <canvas id="pieChart2" width="390" height="190"></canvas>
+            </div>
+        </div>
     </section>
+    
     
 
    
@@ -225,30 +236,61 @@
     </div>
 </footer>
 
-    <script>
-        const ctx = document.getElementById('revenueChart').getContext('2d');
-        const revenueChart = new Chart(ctx, {
-            type: 'bar', 
-            data: {
-                labels: ['Tuần 1', 'Tuần 2', 'Tuần 3', 'Tuần 4'], // Dữ liệu cho trục x
-                datasets: [{
-                    label: 'Doanh thu (VND)', // Nhãn biểu đồ
-                    data: [3000000, 4000000, 5000000, 6000000], // Dữ liệu cho trục y
-                    backgroundColor: 'rgba(255, 87, 34, 0.2)', // Màu nền (nhạt)
-                    borderColor: 'rgba(255, 87, 34, 1)', // Màu viền (đậm)
-                    borderWidth: 2 // Độ dày viền
-                }]
-            },
-            options: {
-                responsive: true, // Điều chỉnh theo kích thước màn hình
-                scales: {
-                    y: {
-                        beginAtZero: true // Trục y bắt đầu từ 0
-                    }
-                }
+<script>
+// Biểu đồ doanh thu (biểu đồ cột)
+const ctx = document.getElementById('revenueChart').getContext('2d');
+const revenueChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['Tuần 1', 'Tuần 2', 'Tuần 3', 'Tuần 4'],
+        datasets: [{
+            label: 'Doanh thu (VND)',
+            data: [5000000, 4005000, 3034000, 6000000],
+            backgroundColor: 'rgba(255, 87, 34, 0.2)',
+            borderColor: 'rgba(255, 87, 34, 1)',
+            borderWidth: 2
+        }]
+    },
+    options: {
+        responsive: true,
+        scales: {
+            y: {
+                beginAtZero: true
             }
-        });
-    </script>
+        }
+    }
+});
+
+// Biểu đồ tròn 1 - Ví dụ: Phân loại sản phẩm
+const pieData1 = {
+    labels: ['Áo thun', 'Giày thể thao', 'Quần jeans'],
+    datasets: [{
+        label: 'Sản phẩm',
+        data: [50, 20, 30],
+        backgroundColor: ['#ff6384', '#36a2eb', '#cc65fe'],
+        hoverOffset: 4
+    }]
+};
+const pieChart1 = new Chart(
+    document.getElementById('pieChart1'),
+    { type: 'pie', data: pieData1 }
+);
+
+// Biểu đồ tròn 2 - Ví dụ: Tình trạng kho
+const pieData2 = {
+    labels: ['Còn hàng', 'Hết hàng'],
+    datasets: [{
+        label: 'Tình trạng kho',
+        data: [70, 30],
+        backgroundColor: ['#4bc0c0', '#ffcd56'],
+        hoverOffset: 4
+    }]
+};
+const pieChart2 = new Chart(
+    document.getElementById('pieChart2'),
+    { type: 'pie', data: pieData2 }
+);
+</script>
     <script src="script.js"></script>
 </body>
 </html>

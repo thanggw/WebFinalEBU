@@ -105,14 +105,26 @@ body {
     padding: 1rem;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width: 50%;
-    max-width: 600px;
+    width: 90%; /* Tăng độ rộng để chứa được nhiều biểu đồ */
+    max-width: 1200px;
     text-align: center;
+}
+
+.charts-row {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.chart-box {
+    width: 30%; /* Chia đều chiều rộng cho các biểu đồ */
+    padding: 1rem;
 }
 
 canvas {
     max-width: 100%;
 }
+
 
 
 @media (max-width: 768px) {
@@ -249,8 +261,8 @@ canvas {
 }
 .add-product {
     margin: 2rem auto;
-    width: 90%;
-    max-width: 600px;
+    width: 100%;
+    max-width: 1200px;
     background-color: white;
     padding: 1.5rem;
     border-radius: 5px;
@@ -486,3 +498,74 @@ footer {
     font-size: 14px;
     color: #bbb;
 }
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .navbar .logo {
+        margin-bottom: 1rem;
+    }
+}
+@media (max-width: 768px) {
+    .overview-item {
+        width: 48%;
+    }
+}
+
+@media (max-width: 480px) {
+    .overview-item {
+        width: 100%;
+    }
+}
+@media (max-width: 768px) {
+    .chart-container {
+        width: 80%;
+    }
+}
+@media (max-width: 768px) {
+    .notification-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .notification-item span {
+        margin-top: 0.5rem;
+    }
+}
+@media (max-width: 768px) {
+    .product-table, .product-table thead, .product-table tbody, .product-table th, .product-table td, .product-table tr {
+        display: block;
+    }
+
+    .product-table th {
+        display: none;
+    }
+
+    .product-table td {
+        position: relative;
+        padding-left: 50%;
+        text-align: left;
+    }
+
+    .product-table td:before {
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        width: 50%;
+        padding-left: 0.5rem;
+        font-weight: bold;
+        text-align: left;
+    }
+
+    .product-img {
+        width: 40px;
+        height: 40px;
+    }
+}
+
