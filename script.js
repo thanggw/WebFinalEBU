@@ -91,4 +91,30 @@ document.querySelectorAll('.product button').forEach(button => {
         alert(productName + ' đã được thêm vào giỏ hàng!');
     });
 });
+function toggleMenu() {
+    var menu = document.getElementById('menu-list');
+    menu.classList.toggle('show');
+}
 
+
+
+    // Lấy tất cả các phần tử có class 'scroll-to-products'
+    const scrollToProducts = document.querySelectorAll('.scroll-to-products');
+
+    // Lặp qua từng thẻ span và gán sự kiện click
+    scrollToProducts.forEach(function(span) {
+        span.addEventListener('click', function() {
+            // Tìm phần tử có id 'product-list' và scroll tới nó
+            document.getElementById('product-list').scrollIntoView({
+                behavior: 'smooth' // Cuộn mượt
+            });
+        });
+    });
+
+
+
+
+
+
+ 
+  
