@@ -151,6 +151,21 @@ html {
     justify-content: space-between;
 }
 
+.fly-to-cart {
+    position: absolute;
+    z-index: 9999;
+    pointer-events: none;
+    transition: transform 3s ease-in-out, opacity 3s ease-in-out;
+    width: 50px;
+    height: 50px;
+    opacity: 1;
+}
+
+ 
+  
+  
+
+  
 /* Căn chỉnh chung cho từng nhóm thông tin */
 .user-info > div {
     display: flex;
@@ -203,6 +218,26 @@ html {
     font-size: 10px; /* Kích thước nhỏ hơn */
     color: #333;
 }
+
+
+/* Mặc định biểu tượng và chữ giữ nguyên */
+.user-icon, .wishlist-icon, .cart-icon, .hover-text {
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* Hover qua biểu tượng thay đổi màu sắc và scale lớn hơn một chút */
+.user-icon:hover, .wishlist-icon:hover, .cart-icon:hover {
+    color: #e63946;
+    transform: scale(1.2);
+}
+
+/* Hover qua phần chữ thay đổi màu sắc */
+.hover-text:hover {
+    color: #e63946;
+    text-decoration: underline; /* Nếu muốn chữ có gạch chân khi hover */
+}
+
+
 
 /* Phần Wishlist */
 .wishlist i, .cart i {
