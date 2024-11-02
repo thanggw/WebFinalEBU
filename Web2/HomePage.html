@@ -4,17 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Fashion Store</title>
+    <link rel="stylesheet" href="./styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <!-- Header Section -->
+
     <header class="main-header">
         <div class="top-bar">
             <div class="left-section">
                 <span><a href="./Seller.html">Kênh Người Bán</a></span>
-                <span><a href="login.html">Trở thành Người bán Shopee</a></span>
-                <span><a href="https://play.google.com/store/search?q=shopee&c=apps&hl=vi">Tải ứng dụng</a></span>
+                <span><a href="#">Trở thành Người bán Shopee</a></span>
+                <span><a href="#">Tải ứng dụng</a></span>
                 <span><a href="https://www.instagram.com/_thawngg/">Kết nối</a></span>
             </div>
             <div class="right-section">
@@ -39,7 +40,9 @@
 
             <!-- Search Bar -->
             <div class="search-bar">
-                <input type="text" placeholder="Bạn muốn tìm gì?">
+                <label>
+                    <input type="text" placeholder="Bạn muốn tìm gì?">
+                </label>
                 <button><i class="fa fa-search"></i></button>
                 <div class="suggestions">
                     <span class="scroll-to-products">Giày cao gót</span>
@@ -61,8 +64,8 @@
                         <i class="fa fa-caret-down" style="color: black; background-color: white; width: 20px; margin-top: 22px; font-size: 15px; margin-left: 0px;"></i>
                         <!-- Dropdown menu -->
                         <div class="dropdown-menu">
-                            <a href="login.html">Đăng nhập</a>
-                            <a href="login.html">Đăng ký</a>
+                            <a href="./login.html">Đăng nhập</a>
+                            <a href="./login.html">Đăng ký</a>
                         </div>
                     </div>
                 </div>
@@ -74,14 +77,14 @@
                 </div>
             
                 <div class="cart">
-                    <i class="fa fa-shopping-bag" style="color: #ff6f61"></i>
-                    <span style="color: #ff6f61">Giỏ hàng</span>
-                    <span style="margin-top: 22px; margin-right: 3px; color: #e86868; font-size: 15px;" >0 </span> <span>Sản phẩm</span>
+                    <a href="cart.html"> <i class="fa fa-shopping-bag" style="color: #ff6f61"></i></a>
+                    <!--cần xử lý với giỏ hàng-->
+                    <span style="color: #ff6f61" id="inCart">Giỏ hàng</span>
+                    <span class="cart-items-count" style="margin-top: 22px; margin-right: 3px; color: #e86868; font-size: 15px;" >0 </span> <span>Sản phẩm</span>
                 </div>
             </div>
-            
-              
-              
+
+<!--           hien thi danh sach san pham cua gio hang-->
             
         </div>
 
@@ -144,8 +147,8 @@
             <button class="view-all">Xem tất cả</button>
         </section>
     </section>
-    
-    
+
+
     <!-- Product List Section -->
     <section id="product-list" class="product-list">
         <h2>Featured Products</h2>
@@ -298,7 +301,7 @@
             </div>
         </div>
     </section>
-    
+
 
     <section class="flash-sale">
         <h2>Sale hot trong ngày</h2>
@@ -358,13 +361,8 @@
                 <div class="progress-bar"></div>
                 <button class="option-button">Tùy chọn</button>
             </div>
-        
-        
         </div>
-        
-        
-    
-        <div >
+        <div>
             <button class="view-all">Xem tất cả</button>
         </div>
     
@@ -639,8 +637,6 @@
           </div>
         </div>
       </div>
-
-
       
       <div class="news-section">
         <h2 id="news_h2">Tin tức mới nhất</h2>
@@ -725,7 +721,7 @@
       
       
       <div class="service-section">
-        <a href="#">
+        <a href="index.html">
             <div class="service-item">
                 <img width="40" height="40" class="lazyload loaded" src="//bizweb.dktcdn.net/100/489/042/themes/914351/assets/chinhsach_1.png?1705899054230" alt="Miễn phí vận chuyển">
                 <p>Miễn phí vận chuyển</p>
@@ -733,7 +729,7 @@
             </div>
         </a>
         
-        <a href="#">
+        <a href="index.html">
             <div class="service-item">
                 <img width="40" height="40" class="lazyload loaded" src="//bizweb.dktcdn.net/100/489/042/themes/914351/assets/chinhsach_2.png?1705899054230" alt="Đổi trả dễ dàng">
                 <p>Đổi trả dễ dàng</p>
@@ -741,7 +737,7 @@
             </div>
         </a>
         
-        <a href="#">
+        <a href="index.html">
             <div class="service-item">
                 <img width="40" height="40" class="lazyload loaded" src="//bizweb.dktcdn.net/100/489/042/themes/914351/assets/chinhsach_3.png?1705899054230" alt="Hỗ trợ nhanh chóng">
                 <p>Hỗ trợ nhanh chóng</p>
@@ -749,7 +745,7 @@
             </div>
         </a>
         
-        <a href="#">
+        <a href="index.html">
             <div class="service-item">
                 <img width="40" height="40" class="lazyload loaded" src="//bizweb.dktcdn.net/100/489/042/themes/914351/assets/chinhsach_4.png?1705899054230" alt="Thanh toán đa dạng">
                 <p>Thanh toán đa dạng</p>
@@ -757,6 +753,10 @@
             </div>
         </a>
     </div>
+
+    </div>
+
+   
     
       
     
@@ -798,6 +798,6 @@
         </div>
     </footer>
     
-    <script src="script.js"></script>
+    <script src="./script.js"></script>
 </body>
 </html>

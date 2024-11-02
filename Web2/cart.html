@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Giỏ hàng của bạn</title>
+  <link rel="stylesheet" href="./cart.css">
+</head>
+<body>
+  <h1>Giỏ hàng của bạn</h1>
+  <div id="cart-items"></div>
+  <button id="checkout-button">Thanh toán</button>
+
+  <script>
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+function displayCart() {
+  const cartItemsContainer = document.getElementById('cart-items');
+  cartItemsContainer.innerHTML = '';
+
+  if (cart.length === 0) {
+    cartItemsContainer.innerHTML = '<p>Giỏ hàng của bạn đang trống.</p>';
+    return;
+  }
+
+  cart.forEach((item, index) => {
+    const cartItem = document.createElement('div');
+    cartItem.classList.add('cart-item');
+    cartItem.innerHTML = `
+      <p>${item.name} - ${item.price} x ${item.quantity}</p>
+      <button onclick="removeItem(${index})">Xóa</button>
+    `;
+    cartItemsContainer.appendChild(cartItem);
+  });
+}
+
+function removeItem(index) {
+  cart.splice(index, 1);
+  localStorage.setItem("cart", JSON.stringify(cart));
+  displayCart();
+}
+
+displayCart();
+  </script>
+</body>
+</html>

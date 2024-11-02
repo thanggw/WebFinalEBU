@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hồ Sơ Của Tôi</title>
-    <link rel="stylesheet" href="profile.css">
+    <link rel="stylesheet" href="./profile.css">
 </head>
 <body>
     <div class="profile-container">
         <div class="profile-left">
             <h1>Hồ Sơ Của Tôi</h1>
             <p>Quản lý thông tin hồ sơ để bảo mật tài khoản</p>
-            <form id="profileForm">
+            <form id="formAccountSettings">
                 <div class="form-group">
                     <label for="username">Tên đăng nhập</label>
                     <input type="text" id="username" name="username" disabled value="thngthng701">
@@ -23,11 +23,11 @@
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <a href="#" class="add-link">Thêm</a>
+                    <input type="email" id="email" name="email">
                 </div>
                 <div class="form-group">
                     <label for="phone">Số điện thoại</label>
-                    <a href="#" class="add-link">Thêm</a>
+                    <input type="tel" id="tel" name="tel">
                     <div class="warning">
                         <span>Liên kết số điện thoại bạn đang sử dụng với tài khoản để có thể đăng nhập và mua hàng</span>
                     </div>
@@ -50,12 +50,14 @@
         </div>
         <div class="profile-right">
             <div class="avatar-container">
-                <img src="https://via.placeholder.com/150" alt="avatar" class="avatar">
-                <button type="button" class="choose-avatar-btn">Chọn Ảnh</button>
+                <img src="https://via.placeholder.com/150" alt="avatar" class="avatar" id="uploadedAvatar">
+                <button type="button" class="choose-avatar-btn">
+                    <input type="file" id="upload" class="account-file-input" hidden
+                           accept="image/png, image/jpeg"/>Chọn Ảnh</button>
                 <small class="avatar-info">Dụng lượng file tối đa 1 MB<br>Định dạng: .JPEG, .PNG</small>
             </div>
         </div>
     </div>
-    <script src="profile.js"></script>
+<script src="./profile.js"></script>
 </body>
 </html>
