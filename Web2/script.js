@@ -56,8 +56,8 @@ function startCountdown(hours, minutes, seconds) {
     const interval = setInterval(updateCountdown, 1000);
 }
 
-// Start countdown with 7 hours, 9 minutes, 45 seconds
-startCountdown(7, 9, 45);
+// Start countdown with 2 hours, 9 minutes, 45 seconds
+startCountdown(2, 9, 45);
 
 
 //Sao chép mã voucher khi nhấn vào nút 'Sao chép'
@@ -135,11 +135,7 @@ function toggleMenu() {
           });
         });
       
-        function updateCartDisplay() {
-          const cartIcon = document.querySelector('.cart .cart-items-count');
-          const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
-          cartIcon.textContent = totalItems ;
-        }
+        
       
         if (localStorage.getItem("cart")) {
           cart = JSON.parse(localStorage.getItem("cart"));
@@ -149,10 +145,14 @@ function toggleMenu() {
         document.querySelector('.cart').addEventListener('click', () => {
           window.location.href = './cart.html';
         });
-      });
+    });
       
     
-    
+      function updateCartDisplay() {
+        const cartIcon = document.querySelector('.cart .cart-items-count');
+        const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
+        cartIcon.textContent = totalItems ;
+      }
     // Khởi tạo giỏ hàng trống
     let cart = [];
     
@@ -166,10 +166,59 @@ function toggleMenu() {
     document.querySelector('.cart').addEventListener('click', () => {
       window.location.href = './cart.html'; // Chuyển hướng đến trang giỏ hàng
     });
+
+
+
+    
+
+    document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('.product-sales .add-to-cart').forEach((button, index) => {
+          button.addEventListener('click', () => {
+            const product = document.querySelectorAll('.product-sales')[index];
+            const productName = product.querySelector('h3').innerText;
+            const productPrice = product.querySelector('.sale-price').innerText;
+      
+            const item = { name: productName, price: productPrice, quantity: 1 };
+      
+            const existingItem = cart.find(i => i.name === item.name);
+            if (existingItem) {
+              existingItem.quantity += 1;
+            } else {
+              cart.push(item);
+            }
+      
+            localStorage.setItem("cart", JSON.stringify(cart));
+            updateCartDisplay();
+          });
+        });
+      
+        
+      
+        if (localStorage.getItem("cart")) {
+          cart = JSON.parse(localStorage.getItem("cart"));
+          updateCartDisplay();
+        }
+      
+        document.querySelector('.cart').addEventListener('click', () => {
+          window.location.href = './cart.html';
+        });
+    });
+
+    document.querySelectorAll('.product-sales button').forEach(button => {
+        button.addEventListener('click', function() {
+            alert( 'Sản phẩm đã được thêm vào giỏ hàng!');
+        });
+    });
     
     
       
-
+   
+      
+      
+      
+      
+      
+      
 
  
   
