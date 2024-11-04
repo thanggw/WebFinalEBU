@@ -14,6 +14,13 @@ body {
 .main-header {
     width: 100%;
 }
+.main-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: white; /* Đảm bảo header nổi bật và không bị che bởi nội dung bên dưới */
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -337,9 +344,127 @@ html {
     font-weight: bold;
 }
 
+
+
+.navigation ul li a {
+    text-decoration: none;
+    color: #c83a3a;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+.navigation ul li a i {
+    margin-right: 5px; 
+    animation: ring 1s infinite; 
+}
+@keyframes ring {
+    0% { transform: rotate(0); }
+    10% { transform: rotate(15deg); }
+    20% { transform: rotate(-10deg); }
+    30% { transform: rotate(10deg); }
+    40% { transform: rotate(-5deg); }
+    50% { transform: rotate(5deg); }
+    60% { transform: rotate(-2deg); }
+    100% { transform: rotate(0); }
+}
+
+.ringing {
+    color: #c83a3a; 
+}
+.navigation ul li a:hover i {
+    color: #ff0000; 
+}
 .navigation ul li a:hover {
     text-decoration: underline;
 }
+
+
+
+/* Positioning */
+.contact-icons {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 1000; /* Ensure it's always on top */
+}
+
+.contact, .messenger {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.contact i {
+    font-size: 30px;
+    color: #fff;
+    background-color: #d9232d; /* Red background */
+    padding: 15px;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow */
+    position: relative;
+    transition: transform 0.2s ease-in-out;
+}
+
+/* Add some text styling */
+.contact p {
+    width:fit-content;
+    margin-top: 10px;
+    color: #d9232d; 
+    font-size: 14px;
+}
+
+/* Stronger Bounce/Vibrate effect for "Liên hệ" icon */
+.contact i {
+    animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    20% {
+        transform: translateY(-10px);
+    }
+    40% {
+        transform: translateY(5px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+    80% {
+        transform: translateY(3px);
+    }
+}
+
+/* Styling for the Messenger icon */
+.messenger i {
+    font-size: 40px;
+    color: #fff;
+    background-color: #0084FF; /* Facebook Messenger blue */
+    padding: 15px;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow */
+    transition: transform 0.2s ease-in-out;
+    margin-top: -20px;
+}
+
+/* Hover effects for icons */
+.contact i:hover, .messenger i:hover {
+    transform: scale(1.05);
+}
+
+
+
+
+
+
+
 /* Product List Section */
 .product-list {
     padding: 40px 5%;

@@ -245,7 +245,44 @@ function toggleMenu() {
 
     document.querySelectorAll('.product-sales button').forEach(button => {
         button.addEventListener('click', function() {
-            alert( 'Sản phẩm đã được thêm vào giỏ hàng!');
+            // Lấy thông tin sản phẩm
+            const product = this.closest('.product-sales');
+            const productImg = product.querySelector('img').src; // Lấy ảnh sản phẩm
+            const productName = product.querySelector('h3').innerText;
+    
+            // Tạo hình ảnh bay
+            const flyingImg = document.createElement('img');
+            flyingImg.src = productImg;
+            flyingImg.classList.add('fly-to-cart');
+            document.body.appendChild(flyingImg);
+    
+            // Lấy vị trí hiện tại của sản phẩm và giỏ hàng (bao gồm cả phần cuộn)
+            const productRect = product.getBoundingClientRect();
+            const cartIcon = document.querySelector('.cart .fa-shopping-bag');
+            const cartRect = cartIcon.getBoundingClientRect();
+    
+            // Điều chỉnh vị trí bắt đầu cho hình ảnh theo vị trí trên trang (thêm window.scrollX, window.scrollY)
+            flyingImg.style.position = 'absolute';
+            flyingImg.style.top = `${productRect.top + window.scrollY}px`;
+            flyingImg.style.left = `${productRect.left + window.scrollX}px`;
+            flyingImg.style.width = `${productRect.width}px`; // Đặt kích thước hình ảnh theo sản phẩm
+            flyingImg.style.height = `${productRect.height}px`;
+    
+            // Bắt đầu di chuyển ảnh đến giỏ hàng
+            setTimeout(() => {
+                flyingImg.style.transform = `translate(${cartRect.left - productRect.left}px, ${cartRect.top - productRect.top}px)`;
+                flyingImg.style.transition = 'transform 1s ease-in-out, opacity 1s ease-in-out';
+                flyingImg.style.opacity = '0';
+            }, 100); // Độ trễ nhỏ để thấy hiệu ứng bắt đầu
+    
+            // Xóa ảnh sau khi kết thúc hiệu ứng
+            setTimeout(() => {
+                flyingImg.remove();
+                // Cập nhật số lượng giỏ hàng
+                const cartItemsCount = document.querySelector('.cart-items-count');
+                cartItemsCount.textContent = parseInt(cartItemsCount.textContent) + 1;
+            }, 1000); // Thời gian hiệu ứng bay (khớp với CSS transition)
+    
         });
     });
     
