@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Details</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #f53d2d;
+            margin-bottom: 20px;
+        }
+
+        .order-summary {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #f0f0f0;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .order-summary div {
+            width: 48%;
+        }
+
+        .order-summary .summary-header {
+            font-size: 1.2em;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .order-summary .summary-info {
+            font-size: 1em;
+            margin-top: 8px;
+            color: #555;
+        }
+
+        .order-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 20px;
+        }
+
+        .order-details div {
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .order-details .detail-header {
+            font-size: 1.1em;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .order-details .detail-info {
+            font-size: 1em;
+            color: #777;
+        }
+
+        .final-price {
+            background-color: #ffe8e5;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            font-size: 1.5em;
+            color: #f53d2d;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .btn-track {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 24px;
+            background-color: #f53d2d;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn-track:hover {
+            background-color: #ff5722;
+        }
+
+        .status.pending {
+            color: #ffa500;
+            font-weight: bold;
+        }
+
+        .status.completed {
+            color: #28a745;
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Order Details</h1>
+
+    <div class="order-summary">
+        <div>
+            <div class="summary-header">Order ID: <span id="orderId"></span></div>
+            <div class="summary-info">Ordered by: <span id="orderPlacedBy"></span></div>
+            <div class="summary-info">Order Date: <span id="createdDate"></span></div>
+        </div>
+        <div>
+            <div class="summary-header">Order Status: <span id="orderStatus" class="status"></span></div>
+            <div class="summary-info">Payment Status: <span id="paymentStatus"></span></div>
+            <div class="summary-info">Payment Method: <span id="paymentMethod"></span></div>
+        </div>
+    </div>
+
+    <div class="order-details">
+        <div>
+            <div class="detail-header">Shipping Information</div>
+            <div class="detail-info">Tracking ID: <span id="trackingId"></span></div>
+            <div class="detail-info">Expected Delivery: <span id="expectedDeliveryDate"></span></div>
+        </div>
+        <div>
+            <div class="detail-header">Order Breakdown</div>
+            <div class="detail-info">Total Quantity: <span id="totalQuantity"></span></div>
+            <div class="detail-info">Total Price: $<span id="totalPrice"></span></div>
+            <div class="detail-info">Shipping Cost: $<span id="shippingCost"></span></div>
+            <div class="detail-info">Discount: $<span id="discount"></span></div>
+        </div>
+    </div>
+
+    <div class="final-price">
+        Final Price: $<span id="finalPrice"></span>
+    </div>
+
+    <button class="btn-track">Track Order</button>
+</div>
+
+<script>
+    // Dữ liệu JSON từ back-end
+    const orderData = {
+        "orderId": 19,
+        "totalQuantity": 2,
+        "totalPrice": 800.00,
+        "shippingCost": 50,
+        "discount": 10.0,
+        "finalPrice": 840.0,
+        "orderStatus": "Pending",
+        "orderPlacedBy": "Doe",
+        "createdDate": "2024-11-08T00:22:43.3464612",
+        "expectedDeliveryDate": "2024-11-13T00:22:43.346",
+        "paymentStatus": "PENDING",
+        "paymentMethod": "CREDIT_CARD",
+        "trackingId": "TRACK123456"
+    };
+
+    // Function to populate the page with the JSON data
+    function populateOrderDetails(data) {
+        document.getElementById('orderId').innerText = data.orderId;
+        document.getElementById('orderPlacedBy').innerText = data.orderPlacedBy;
+        document.getElementById('createdDate').innerText = new Date(data.createdDate).toLocaleString();
+        document.getElementById('totalQuantity').innerText = data.totalQuantity;
+        document.getElementById('totalPrice').innerText = data.totalPrice.toFixed(2);
+        document.getElementById('shippingCost').innerText = data.shippingCost.toFixed(2);
+        document.getElementById('discount').innerText = data.discount.toFixed(2);
+        document.getElementById('finalPrice').innerText = data.finalPrice.toFixed(2);
+        document.getElementById('expectedDeliveryDate').innerText = new Date(data.expectedDeliveryDate).toLocaleString();
+        document.getElementById('paymentStatus').innerText = data.paymentStatus;
+        document.getElementById('paymentMethod').innerText = data.paymentMethod;
+        document.getElementById('trackingId').innerText = data.trackingId;
+
+        const orderStatusElement = document.getElementById('orderStatus');
+        orderStatusElement.innerText = data.orderStatus;
+        orderStatusElement.classList.add(data.orderStatus.toLowerCase() === 'pending' ? 'pending' : 'completed');
+    }
+
+    // Populate the page with data on page load
+    populateOrderDetails(orderData);
+</script>
+
+</body>
+</html>
